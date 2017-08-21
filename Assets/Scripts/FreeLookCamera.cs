@@ -80,35 +80,35 @@ public class FreeLookCamera : MonoBehaviour
                 previosLenght = length;
             }
         }
-//#if UNITY_EDITOR
-        
-//        if(!clicked)
-//            if (Input.GetMouseButton(0))
-//            {
-//                if (EventSystem.current.IsPointerOverGameObject())
-//                {
-//                    uiInput = true;
-//                }
-//                else
-//                {
-//                    uiInput = false;
-//                }
-//                clicked = true;
-//            }
-//        if (clicked)
-//            if (Input.GetMouseButtonUp(0))
-//                clicked = false;
-//        if (!uiInput)
-//        {
-//            if (Input.GetMouseButton(0) || (Input.GetMouseButton(0)))
-//            {
-//                x += Input.GetAxis("Mouse X") * xSpeed * 10 * 0.02f;
-//                y -= Input.GetAxis("Mouse Y") * ySpeed * 10 * 0.02f;
-//            }
+#if UNITY_EDITOR
 
-//        }
-//        distance -= (Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime) * zoomRate * Mathf.Abs(distance);
-//#endif
+        if (!clicked)
+            if (Input.GetMouseButton(0))
+            {
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    uiInput = true;
+                }
+                else
+                {
+                    uiInput = false;
+                }
+                clicked = true;
+            }
+        if (clicked)
+            if (Input.GetMouseButtonUp(0))
+                clicked = false;
+        if (!uiInput)
+        {
+            if (Input.GetMouseButton(0) || (Input.GetMouseButton(0)))
+            {
+                x += Input.GetAxis("Mouse X") * xSpeed * 10 * 0.02f;
+                y -= Input.GetAxis("Mouse Y") * ySpeed * 10 * 0.02f;
+            }
+
+        }
+        distance -= (Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime) * zoomRate * Mathf.Abs(distance);
+#endif
         distance = Mathf.Clamp(distance, minDistance, maxDistance);
 
         y = ClampAngle(y, yMinLimit, yMaxLimit);
